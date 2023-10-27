@@ -24,5 +24,8 @@ where id_medico in
 from consulta
 where data_consulta between "2015-01-14" and "2015-09-04");
 
-/*Q4: Selecione o nome dos pacientes que consultaram pelo menos 2 vezes*/
-select 
+/*Q4: Selecione o id das cidades que atenderam pelo menos 3 pacientes */
+select c.id_cidade as cidade, count(p.id_paciente) as total_pacientes
+from paciente p join cidade c on p.id_cidade = c.id_cidade
+group by c.id_cidade
+having count(p.id_paciente)>=3;
